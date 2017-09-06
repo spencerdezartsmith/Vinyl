@@ -1,26 +1,20 @@
-const db = require('../models/albums')
+const Album = require('../models/albums')
+const Review = require('../models/reviews')
 
-const getAllAlbums = (req, res, next) => {
-  db.getAllAlbums()
-    .then(albums => {
-      res.render('index', { albums, user: req.user })
-    })
-    .catch(err => next(err))
-}
-
-
-const getOneAlbumById = (req, res, next) => {
+const dataForAlbumShow = (req, res, next) => {
   const { albumID } = req.params
 
-  db.getOneAlbumById(albumID)
+  return Album.getOneAlbumById(albumID)
     .then(album => {
-      res.send(album)
+      Review.getReviewsForOneAlbum(albumID)
+        .then(reviews => {
+          res.render('album', { album, reviews })
+        })
     })
     .catch(err => next(err))
 }
 
 module.exports = {
-  getAllAlbums,
-  getOneAlbumById
+  dataForAlbumShow
 }
 

@@ -4,6 +4,16 @@ const getThreeReviews = () => {
   return Review.getThreeReviews()
 }
 
+const getReviewsForOneAlbum = (albumId) => {
+  return Review.getReviewsForOneAlbum(albumId)
+}
+
+const createNewReview = (data) => {
+  return Review.createNewReview(data)
+}
+
 module.exports = {
-  getThreeReviews
+  getThreeReviews,
+  getReviewsForOneAlbum,
+  createNewReview
 }

@@ -17,6 +17,10 @@ router.post('/signin', requireSignin, AuthController.userSignin)
 
 router.get('/logout', AuthController.userLogout)
 
-router.get('/albums/:albumID', AlbumsController.getOneAlbumById)
+router.get('/albums/:albumId/reviews/new', ReviewsController.renderNewReview)
+
+router.post('/albums/:albumId/reviews/new', ReviewsController.handleNewReview)
+
+router.get('/albums/:albumID', AlbumsController.dataForAlbumShow)
 
 module.exports = router

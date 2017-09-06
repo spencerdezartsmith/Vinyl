@@ -50,7 +50,7 @@ const userLogout = (req, res, next) => {
 }
 
 const renderProfile = (req, res, next) => {
-  res.render('profile', { user: req.user })
+  res.render('profile')
 }
 
 module.exports = {

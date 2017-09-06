@@ -1,17 +1,6 @@
 const Review = require('../models/reviews')
 const Album = require('../models/albums')
 
-const dataForHomePage = (req, res, next) => {
-  Album.getAllAlbums()
-    .then(albums => {
-      return Review.getThreeReviews()
-        .then(reviews => {
-          res.render('index', { albums, reviews })
-        })
-    })
-    .catch(err => next(err))
-}
-
 const renderNewReview = (req, res, next) => {
   const { albumId } = req.params
   return Album.getOneAlbumById(albumId)
@@ -44,7 +33,6 @@ const handleDeleteReview = (req, res, next) => {
 }
 
 module.exports = {
-  dataForHomePage,
   renderNewReview,
   handleNewReview,
   handleDeleteReview

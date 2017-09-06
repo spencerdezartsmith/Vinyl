@@ -1,7 +1,7 @@
 const passport = require('passport')
 const bcrypt= require('bcrypt-nodejs')
 const LocalStrategy = require('passport-local')
-const User = require('../models/account')
+const User = require('../models/users')
 
 passport.serializeUser((user, done) => done(null, user.id))
 

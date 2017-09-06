@@ -1,4 +1,4 @@
-const User = require('./db/account')
+const User = require('./db/users')
 
 const findByEmail = (email) => {
   return User.findByEmail(email)

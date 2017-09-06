@@ -3,3 +3,9 @@ html, body {
   padding: 0;
   width: 100vw;
 }
+
+h1.form-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}

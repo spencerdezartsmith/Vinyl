@@ -1,12 +1,11 @@
-const db = require('./db/albums')
-
+const Album = require('./db/albums')
 
 const getAllAlbums = () => {
-  return db.getAllAlbums()
+  return Album.getAllAlbums()
 }
 
 const getOneAlbumById = (albumID) => {
-  return db.getOneAlbumById(albumID)
+  return Album.getOneAlbumById(albumID)
 }
 
 module.exports = {

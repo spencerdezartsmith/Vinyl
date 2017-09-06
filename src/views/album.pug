@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  .container
+    .row
+      .col-md-2
+      .col-md-8
+        h1 #{album.title}
+        .reviews-header
+          h2 Reviews
+          a.btn.btn-info(href=`/albums/${album.id}/reviews/new` role='button') Add Review
+        .album-reviews
+          each review in reviews
+            - var date = new Date(review.review_date).toDateString()
+            h4
+              a(href=`/albums/${album.id}`) #{album.title}
+              span #{date}
+            p #{review.review}
+            p #{review.reviewer}
+            br
+      .col-md-2

@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  .container
+    .row
+      .col-xs-3
+      .col-xs-6
+        h1 New review for #{album.title}
+        .review-form
+          form(method='post' action=`/albums/${album.id}/reviews/new`)
+            .form-group
+              .text-box
+                textarea.form-control(type='text', rows=10 name='review')
+              .submit-btn
+                button.btn.btn-primary(type='submit') Submit
+      .col-xs-3

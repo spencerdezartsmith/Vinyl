@@ -1,41 +1,46 @@
 const path = require('path')
 const express = require('express')
+const session = require('express-session')
+const passport = require('passport')
+const flash = require('connect-flash')
+const expressValidator = require('express-validator')
 const bodyParser = require('body-parser')
-const db = require('./db')
+const routes = require('./routes')
 
 const port = process.env.PORT || 3000
 
 const app = express()
 
-require('ejs')
-app.set('view engine', 'ejs')
+require('pug')
+app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, 'views'))
 
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, './public')))
 app.use(bodyParser.urlencoded({extended: false}))
+app.use(expressValidator())
 
-app.get('/', (req, res) => {
-  db.getAlbums((error, albums) => {
-    if (error) {
-      res.status(500).render('error', {error})
-    } else {
-      res.render('index', {albums})
-    }
-  })
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {maxAge: 60000 * 30},
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
+
+app.use(flash());
+app.use(function (req, res, next) {
+  res.locals.messages = require('express-messages')(req, res)
+  next();
 })
 
-app.get('/albums/:albumID', (req, res) => {
-  const albumID = req.params.albumID
-
-  db.getAlbumsByID(albumID, (error, albums) => {
-    if (error) {
-      res.status(500).render('error', {error})
-    } else {
-      const album = albums[0]
-      res.render('album', {album})
-    }
-  })
+app.get('*', (req, res, next) => {
+  res.locals.user = req.user || null
+  next()
 })
+
+app.use('/', routes)
 
 app.use((req, res) => {
   res.status(404).render('not_found')

@@ -1,5 +1,4 @@
-const db = require('./db/authentication')
-const User = require('./db/authentication')
+const User = require('./db/account')
 
 const findByEmail = (email) => {
   return User.findByEmail(email)

@@ -1,6 +1,12 @@
 html, body {
   margin: 0;
   padding: 0;
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
 }
 
@@ -8,4 +14,14 @@ h1.form-header {
   display: flex;
   justify-content: center;
   margin-bottom: 50px;
+}
+
+.album-list {
+  background-color: green;
+  height: 100px;
+}
+
+.album-reviews {
+  border: 5px solid black;
+  height: 100px;
 }

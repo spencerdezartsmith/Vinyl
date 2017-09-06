@@ -2,11 +2,12 @@ require('../services/passport')
 const router = require('express').Router()
 const passport = require('passport')
 const AlbumsController = require('../controllers/albums')
-const AuthController = require('../controllers/authentication')
+const AuthController = require('../controllers/accounts')
+const ReviewsController = require('../controllers/reviews')
 
-const requireSignin = passport.authenticate('local')
+const requireSignin = passport.authenticate('local', { failureRedirect: '/signin' , failureFlash: 'Invalid Credentials'})
 
-router.get('/', AlbumsController.getAllAlbums)
+router.get('/', ReviewsController.dataForHomePage)
 
 router.get('/signup', AuthController.renderSignup)
 router.post('/signup', AuthController.userSignup)

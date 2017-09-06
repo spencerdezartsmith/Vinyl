@@ -1,4 +1,4 @@
-const User = require('../models/authentication')
+const User = require('../models/account')
 
 const renderSignup = (req, res, next) => {
   res.render('signup')
@@ -38,8 +38,9 @@ const renderSignin = (req, res, next) => {
 }
 
 const userSignin = (req, res, next) => {
+  const user = req.user
   req.flash('success', 'You are now logged in!')
-  res.redirect('/users/' + req.user.id);
+  res.redirect('/');
 }
 
 const userLogout = (req, res, next) => {
@@ -48,10 +49,15 @@ const userLogout = (req, res, next) => {
   res.redirect('/')
 }
 
+const renderProfile = (req, res, next) => {
+  res.render('profile', { user: req.user })
+}
+
 module.exports = {
   renderSignup,
   userSignup,
   renderSignin,
   userSignin,
-  userLogout
+  userLogout,
+  renderProfile
 }

@@ -1,1 +1,30 @@
 extends layout.pug
+
+block content
+  .jumbotron
+    .container-title
+      h1.display-3 Vinyl
+      p.lead
+        | Opinionated people giving their personal opions about albums
+  .container.album-display
+    .row
+      .col-md-4
+        .album-list
+          h2 Records
+            each album in albums
+              h3
+                a(href=`/albums/${album.id}`) #{album.title}
+              p #{album.artist}
+      .col-md-8
+        .album-reviews
+          h1 Recent Reviews
+          each review in reviews
+            - var date = new Date(review.review_date).toDateString()
+            h4
+              a(href=`/albums/${review.album_id}`) #{review.album_title}
+              span #{date}
+            p #{review.review}
+            p #{review.reviewer}
+            br
+
+

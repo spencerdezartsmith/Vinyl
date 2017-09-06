@@ -1,1 +1,26 @@
-extends layout.pug
+extends layout
+
+block content
+  .row
+    .col-xs-4
+      .profile-image
+        img.img-thumbnail(src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/4/000/13d/345/21f37ec.jpg" alt="profile image")
+    .col-xs-8
+      .user-details
+        - var joinDate = new Date(user.date_joined).toDateString()
+        h1.user-name #{user.name}
+        h4 Email: #{user.email}
+        h4 Date Joined: #{joinDate}
+      .user-reviews
+        each review in reviews
+          - var reviewDate = new Date(review.review_date).toDateString()
+          .review-card(id=`${review.id}`)
+            .review-details
+              h4.review-header
+                a(href=`/albums/${review.album_id}`) #{review.album_title}
+                span #{reviewDate}
+              p #{review.review}
+            .trash-can
+              i.fa.fa-trash(aria-hidden='true')
+
+

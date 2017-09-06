@@ -8,14 +8,14 @@ block content
         | Opinionated people giving their personal opions about albums
   .container.album-display
     .row
-      .col-md-4
+      .col-xs-4
         .album-list
           h2 Records
             each album in albums
               h3
                 a(href=`/albums/${album.id}`) #{album.title}
               p #{album.artist}
-      .col-md-8
+      .col-xs-8
         .album-reviews
           h1 Recent Reviews
           each review in reviews

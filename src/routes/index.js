@@ -17,9 +17,13 @@ router.post('/signin', requireSignin, AuthController.userSignin)
 
 router.get('/logout', AuthController.userLogout)
 
+router.get('/users/:userId', AuthController.renderProfile)
+
 router.get('/albums/:albumId/reviews/new', ReviewsController.renderNewReview)
 
 router.post('/albums/:albumId/reviews/new', ReviewsController.handleNewReview)
+
+router.delete('/reviews/:reviewId', ReviewsController.handleDeleteReview)
 
 router.get('/albums/:albumID', AlbumsController.dataForAlbumShow)
 

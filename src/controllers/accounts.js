@@ -1,4 +1,5 @@
 const User = require('../models/account')
+const Review = require('../models/reviews')
 
 const renderSignup = (req, res, next) => {
   res.render('signup')
@@ -17,13 +18,13 @@ const userSignup = (req, res, next) => {
   if (errors) {
     res.render('signup', { errors })
   } else {
-    User.findByEmail(email)
+      return User.findByEmail(email)
       .then(user => {
         if (user) {
           req.flash('error', 'Email already in use!')
           res.status(422).render('signup')
         } else {
-          User.createNewUser({ name, email, password })
+          return User.createNewUser({ name, email, password })
             .then(user => {
               req.flash('success', 'You are now registered and can log in!')
               res.redirect('/signin')
@@ -50,7 +51,13 @@ const userLogout = (req, res, next) => {
 }
 
 const renderProfile = (req, res, next) => {
-  res.render('profile')
+  const { userId } = req.params
+
+  return Review.getReviewsForOneUser(userId)
+    .then(reviews => {
+      res.render('profile', { reviews })
+    })
+    .catch(err => next(err))
 }
 
 module.exports = {

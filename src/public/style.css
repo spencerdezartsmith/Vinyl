@@ -19,3 +19,42 @@ html, body {
 .btn {
   height: 36px;
 }
+
+.profile-image {
+  display: flex;
+  justify-content: center;
+}
+
+.user-details {
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.user-reviews {
+  margin-top: 60px;
+}
+
+.review-details {
+  width: 90%;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-card {
+  display: flex;
+  justify-content: space-between;
+  height: 150px;
+  align-items: center;
+}
+
+.fa.fa-trash {
+  font-size: 36px;
+}
+
+
+

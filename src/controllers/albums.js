@@ -6,7 +6,7 @@ const dataForAlbumShow = (req, res, next) => {
 
   return Album.getOneAlbumById(albumID)
     .then(album => {
-      Review.getReviewsForOneAlbum(albumID)
+      return Review.getReviewsForOneAlbum(albumID)
         .then(reviews => {
           res.render('album', { album, reviews })
         })

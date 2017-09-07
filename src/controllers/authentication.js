@@ -13,27 +13,27 @@ const handleSignup = (req, res, next) => {
   req.check('password', 'Password must be 6 or more characters').isLength({ min: 6 })
   req.check('password', 'Passwords must match!').equals(passwordConf)
 
-  const errors = req.validationErrors()
-
-  if (errors) {
-    res.render('authentication/signup', { errors })
-  } else {
-      User.findByEmail(email)
-      .then(user => {
-        if (user) {
-          req.flash('error', 'Email already in use!')
-          res.status(422).render('authentication/signup')
-        } else {
-          User.createNewUser({ name, email, password })
-            .then(user => {
-              req.flash('success', 'You are now registered and can log in!')
-              res.redirect('/sign-in')
-          })
-          .catch(error => res.status(500).render('errors/error', { error }))
-        }
-      })
-      .catch(error => res.status(500).render('errors/error', { error }))
-  }
+  req.getValidationResult()
+    .then(result => {
+      if (!result.isEmpty()) {
+        res.render('authentication/signup', { errors: result.array() })
+      } else {
+        User.findByEmail(email)
+          .then(user => {
+            if (user) {
+              req.flash('error', 'Email already in use!')
+              res.status(422).render('authentication/signup')
+            } else {
+              User.createNewUser({ name, email, password })
+                .then(user => {
+                  req.flash('success', 'You are now registered and can log in!')
+                  res.redirect('/sign-in')
+                })
+                .catch(error => res.status(500).render('errors/error', { error }))
+            }
+        })
+      }
+  })
 }
 
 const renderSignin = (req, res, next) => {

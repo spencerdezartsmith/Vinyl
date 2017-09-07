@@ -1,13 +1,4 @@
 INSERT INTO
-  albums (title, artist)
-VALUES
-  ('Malibu', 'Anderson .Paak'),
-  ('A Seat at the Table', 'Solange Knowles'),
-  ('Melodrama', 'Lorde'),
-  ('In Rainbows', 'Radiohead')
-;
-
-INSERT INTO
   reviews (review, user_id, album_id)
 VALUES
   ('Tattooed snackwave gastropub sustainable fashion axe affogato kickstarter meditation. Succulents stumptown heirloom direct trade, brunch farm-to-table freegan kombucha gochujang yuccie flannel austin. VHS typewriter pinterest gluten-free farm-to-table marfa, YOLO umami single-origin coffee put a bird on it la croix. Taxidermy vinyl godard woke snackwave ethical meh heirloom.', 1, 1),

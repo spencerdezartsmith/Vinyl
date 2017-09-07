@@ -120,10 +120,18 @@ html, body {
   margin-left: 10px;
 }
 
-.no-reviews {
+.no-reviews-center {
   height: 200px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  font-size: 3em;
+  font-weight: 300;
+}
+
+.no-reviews {
+  height: 200px;
+  display: flex;
   align-items: center;
   font-size: 3em;
   font-weight: 300;

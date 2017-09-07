@@ -1,4 +1,4 @@
-extends layout
+extends templates/layout
 
 block content
   .row.profile-page
@@ -13,15 +13,19 @@ block content
         h4 Date Joined: #{joinDate}
       .user-reviews
         h1 Reviews
-        each review in reviews
-          - var reviewDate = moment(review.review_date).format('MMMM Do YYYY')
-          .review-card(id=`${review.id}`)
-            .review-details
-              h4.review-header
-                a(href=`/albums/${review.album_id}`) #{review.album_title}
-                span #{reviewDate}
-              p #{review.review}
-            .trash-can
-              i.fa.fa-trash(aria-hidden='true')
+        if reviews.length !== 0
+          each review in reviews
+            - var reviewDate = moment(review.review_date).format('MMMM Do YYYY')
+            .review-card(id=`${review.id}`)
+              .review-details
+                h4.review-header
+                  a(href=`/albums/${review.album_id}`) #{review.album_title}
+                  span #{reviewDate}
+                p #{review.review}
+              .trash-can
+                i.fa.fa-trash(aria-hidden='true')
+        else
+          .no-reviews
+            p No reviews found :(
 
 

@@ -11,15 +11,20 @@ const { isLoggedIn } = require('./middlewares')
 
 const requireSignin = passport.authenticate('local', { failureRedirect: '/signin' , failureFlash: 'Invalid Credentials'})
 
-router.get('/signup', AuthController.renderSignup)
-router.post('/signup', AuthController.handleSignup)
-router.get('/signin', AuthController.renderSignin)
-router.post('/signin', requireSignin, AuthController.handleSignin)
+// Authentication Routes
+router.get('/sign-up', AuthController.renderSignup)
+router.post('/sign-up', AuthController.handleSignup)
+router.get('/sign-in', AuthController.renderSignin)
+router.post('/sign-in', requireSignin, AuthController.handleSignin)
 router.get('/logout', AuthController.handleLogout)
 
+// Unprotected Home Route
 router.get('/', AlbumsController.renderHomePage)
+
+// Authentication middleware
 router.use(isLoggedIn)
 
+// Protected Routes
 router.get('/albums/:albumId', AlbumsController.renderAlbumShow)
 
 router.get('/users/:userId', UsersController.renderUserProfile)

@@ -1,4 +1,4 @@
-extends layout
+extends templates/layout
 
 block content
   .container
@@ -12,6 +12,6 @@ block content
               .text-box
                 textarea.form-control(type='text', rows=10 name='review')
               .btn-container
-                button.btn.btn-primary.review-btn(type='submit') Submit
                 a.btn.btn-default.review-btn(href=`/albums/${album.id}`) Cancel
+                button.btn.btn-primary.review-btn(type='submit') Submit
       .col-xs-3

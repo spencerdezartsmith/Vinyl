@@ -29,7 +29,7 @@ const handleDeleteReview = (req, res, next) => {
     .then(() => {
       res.send('Review was successfully deleted!')
     })
-    .catch(error => res.status(500).render('error', { error }))
+    .catch(error => res.status(500).render('errors/error', { error }))
 }
 
 module.exports = {

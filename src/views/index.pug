@@ -1,4 +1,4 @@
-extends layout
+extends templates/layout
 
 block content
   .jumbotron
@@ -19,13 +19,17 @@ block content
         .album-reviews
           h1 Recent Reviews
           .user-reviews
-            each review in reviews
-              - var date = moment(review.review_date).format('MMMM Do YYYY')
-              h4.review-header
-                a.review-title(href=`/albums/${review.album_id}`) #{review.album_title}
-                span.date #{date}
-              p #{review.review}
-              p.author-name by&nbsp&nbsp #{review.reviewer}
-              br
+            if reviews.length !== 0
+              each review in reviews
+                - var date = moment(review.review_date).format('MMMM Do YYYY')
+                h4.review-header
+                  a.review-title(href=`/albums/${review.album_id}`) #{review.album_title}
+                  span.date #{date}
+                p #{review.review}
+                p.author-name by&nbsp&nbsp #{review.reviewer}
+                br
+            else
+              .no-reviews
+                p No reviews found :(
 
 

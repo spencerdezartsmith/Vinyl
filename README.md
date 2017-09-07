@@ -9,6 +9,13 @@ Part of the application has already been built for you. Your job is to take it t
 - Clone the project to your local machine. 
 - Navigate to the project folder.
 - Run `npm install`
+- In the root of the project create a new file called `config.js`  
+- Add the following to that file:
+```
+module.exports = {
+  SECRET: 'helloworld'
+}
+```
 
 ### Setting Up Your Database
 

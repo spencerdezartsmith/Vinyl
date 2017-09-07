@@ -1,24 +1,13 @@
 const Review = require('../models/reviews')
 const Album = require('../models/albums')
 
-const dataForHomePage = (req, res, next) => {
-  Album.getAllAlbums()
-    .then(albums => {
-      return Review.getThreeReviews()
-        .then(reviews => {
-          res.render('index', { albums, reviews })
-        })
-    })
-    .catch(err => next(err))
-}
-
 const renderNewReview = (req, res, next) => {
   const { albumId } = req.params
   return Album.getOneAlbumById(albumId)
     .then(album => {
       res.render('new_review', { album })
     })
-    .catch(err => next(err))
+    .catch(error => res.status(500).render('error', { error }))
 }
 
 const handleNewReview = (req, res, next) => {
@@ -30,7 +19,7 @@ const handleNewReview = (req, res, next) => {
     .then(album => {
       res.redirect(`/albums/${albumId}`)
     })
-    .catch(err => next(err))
+    .catch(error => res.status(500).render('error', { error }))
 }
 
 const handleDeleteReview = (req, res, next) => {
@@ -40,11 +29,10 @@ const handleDeleteReview = (req, res, next) => {
     .then(() => {
       res.send('Review was successfully deleted!')
     })
-    .catch(err => next(err))
+    .catch(error => res.status(500).render('error', { error }))
 }
 
 module.exports = {
-  dataForHomePage,
   renderNewReview,
   handleNewReview,
   handleDeleteReview

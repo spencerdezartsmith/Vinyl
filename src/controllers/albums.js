@@ -1,20 +1,32 @@
 const Album = require('../models/albums')
 const Review = require('../models/reviews')
 
-const dataForAlbumShow = (req, res, next) => {
-  const { albumID } = req.params
+const renderHomePage = (req, res, next) => {
+  Album.getAllAlbums()
+    .then(albums => {
+      return Review.getThreeReviews()
+        .then(reviews => {
+          res.render('index', { albums, reviews, title: 'Home' })
+        })
+    })
+    .catch(error => res.status(500).render('error', { error }))
+}
 
-  return Album.getOneAlbumById(albumID)
+const renderAlbumShow = (req, res, next) => {
+  const { albumId } = req.params
+
+  return Album.getOneAlbumById(albumId)
     .then(album => {
-      return Review.getReviewsForOneAlbum(albumID)
+      return Review.getReviewsForOneAlbum(albumId)
         .then(reviews => {
           res.render('album', { album, reviews })
         })
     })
-    .catch(err => next(err))
+    .catch(error => res.status(500).render('error', { error }))
 }
 
 module.exports = {
-  dataForAlbumShow
+  renderHomePage,
+  renderAlbumShow
 }
 

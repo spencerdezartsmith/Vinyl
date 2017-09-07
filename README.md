@@ -24,11 +24,11 @@ module.exports = {
 npm run db:drop     : Drop database if one already exists
 npm run db:create   : Create new database
 npm run db:schema   : Set up tables in the database
-npm run db:store    : Set up the table for your session store
-npm run db:seed     : Seed your database with dummy data
-npm start           : And you're off
+npm run db:albums   : Seed your database with album data
+npm start           : And you're off...
 ```
-- Navigate to `http://localhost:3000/
+- Navigate to `http://localhost:3000/` 
+- Once you sign up a user, you can run `npm run db:reviews` to populate some dummy reviews. 
 
 
 

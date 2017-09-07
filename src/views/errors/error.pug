@@ -1,0 +1,7 @@
+extends ../templates/layout
+
+block content
+  .error-display
+    h1 Whoops something went wrong!
+    img.cat-img(src='https://i.ytimg.com/vi/MG8KADiRbOU/maxresdefault.jpg' alt='Funny cat picture')
+    p #{error.message}

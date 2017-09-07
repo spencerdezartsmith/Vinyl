@@ -13,11 +13,11 @@ const getThreeReviews = () => {
 
 const getReviewsForOneAlbum = (albumId) => {
   return db.any(`
-    SELECT reviews.review, reviews.id, reviews.review_date, users.name AS reviewer
+    SELECT reviews.review, reviews.id, reviews.review_date, users.name AS reviewer, reviews.user_id AS reviewer_id
     FROM reviews INNER JOIN users ON reviews.user_id = users.id
     JOIN albums ON reviews.album_id = albums.id
     WHERE albums.id = $1
-    ORDER BY reviews.review_date`,
+    ORDER BY reviews.review_date DESC`,
     [albumId]
   )
 }
@@ -39,7 +39,7 @@ const getReviewsForOneUser = (userId) => {
     JOIN users ON reviews.user_id = users.id
     JOIN albums ON reviews.album_id = albums.id
     WHERE users.id = $1
-    ORDER by reviews.review_date
+    ORDER BY reviews.review_date DESC
   `, [userId])
 }
 

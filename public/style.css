@@ -3,21 +3,28 @@ html, body {
   padding: 0;
 }
 
+.jumbotron {
+  display: flex;
+  justify-content: center;
+}
+
+.display-3 {
+  display: flex;
+  justify-content: center;
+}
+
 .form-header {
   display: flex;
   justify-content: center;
   margin-bottom: 50px;
 }
 
-.reviews-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .btn {
   height: 36px;
+}
+
+.profile-page {
+  margin-top: 20px
 }
 
 .profile-image {
@@ -33,7 +40,14 @@ html, body {
 }
 
 .user-reviews {
-  margin-top: 60px;
+  margin-top: 50px;
+}
+
+.reviews-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .review-details {
@@ -43,6 +57,8 @@ html, body {
 .review-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding-right: 20px;
 }
 
 .review-card {
@@ -50,13 +66,72 @@ html, body {
   justify-content: space-between;
   height: 150px;
   align-items: center;
+  margin-bottom: 10px;
+}
+
+.review-title {
+  font-size: 1.5em;
+}
+
+.new-review-title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
 }
 
 .fa.fa-trash {
   font-size: 36px;
 }
 
+.album-list {
+  margin-top: 40px;
+}
+
+.album-title {
+  font-size: 1.5em;
+}
+
+.artist-name {
+  font-size: 1em;
+}
+
+.author-name {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+.date {
+  font-size: 0.8em;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.review-btn {
+  margin-left: 10px;
+}
+
+.no-reviews {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+  font-weight: 300;
+}
+
+ul.success {
+  padding-left: 0px !important;
+}
+
 ul.success li {
+  list-style: none;
+  display: flex;
+  justify-content: center;
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid transparent;
@@ -66,7 +141,14 @@ ul.success li {
   border-color: #d6e9c6;
 }
 
+ul.error {
+  padding-left: 0px !important;
+}
+
 ul.error li {
+  list-style: none;
+  display: flex;
+  justify-content: center;
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid transparent;
@@ -74,6 +156,20 @@ ul.error li {
   background-color: #f2dede;
   color: #a94442;
   border-color: #ebccd1;
+}
+
+.error-display {
+  display: flex;
+  height: 500px;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cat-img {
+  height: 300px;
+  width: 400px;
 }
 
 

@@ -1,4 +1,4 @@
-extends layout.pug
+extends ../templates/layout
 
 block content
   h1.form-header Sign in
@@ -12,7 +12,7 @@ block content
           ul
           each error in errors
             li #{error.msg}
-      form(method='post' action='/signin')
+      form(method='post' action='/sign-in')
         .form-group
           input.form-control(type='email', name='email', placeholder='Enter email')
         .form-group

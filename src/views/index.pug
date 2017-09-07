@@ -1,30 +1,35 @@
-extends layout
+extends templates/layout
 
 block content
   .jumbotron
     .container-title
       h1.display-3 Vinyl
       p.lead
-        | Opinionated people giving their personal opinions about albums
+        | A place for people the Yelp about albums.
   .container.album-display
     .row
       .col-xs-4
-        .album-list
-          h2 Records
+          h1 Records
+          .album-list
             each album in albums
-              h3
+              h3.album-title
                 a(href=`/albums/${album.id}`) #{album.title}
-              p #{album.artist}
+              p.artist-name #{album.artist}
       .col-xs-8
         .album-reviews
           h1 Recent Reviews
-          each review in reviews
-            - var date = new Date(review.review_date).toDateString()
-            h4
-              a(href=`/albums/${review.album_id}`) #{review.album_title}
-              span #{date}
-            p #{review.review}
-            p #{review.reviewer}
-            br
+          .user-reviews
+            if reviews.length !== 0
+              each review in reviews
+                - var date = moment(review.review_date).format('MMMM Do YYYY')
+                h4.review-header
+                  a.review-title(href=`/albums/${review.album_id}`) #{review.album_title}
+                  span.date #{date}
+                p #{review.review}
+                p.author-name by&nbsp&nbsp #{review.reviewer}
+                br
+            else
+              .no-reviews
+                p No reviews found :(
 
 

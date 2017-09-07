@@ -1,8 +1,8 @@
 $(document).ready(function() {
   $('.user-reviews').on('click', '.trash-can', function() {
-    const reviewId = $(this).parent().attr('id')
+    const reviewId = $(this).closest('.review-card').attr('id')
 
-    if (confirm('Are you sure you want to delete this post?')) {
+    if (confirm('Are you sure you want to delete this review?')) {
       deleteReview(reviewId)
     }
   })

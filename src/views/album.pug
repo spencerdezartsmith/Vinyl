@@ -1,4 +1,4 @@
-extends layout
+extends templates/layout
 
 block content
   .container
@@ -9,13 +9,23 @@ block content
         .reviews-header
           h2 Reviews
           a.btn.btn-info(href=`/albums/${album.id}/reviews/new` role='button') Add Review
-        .album-reviews
-          each review in reviews
-            - var date = new Date(review.review_date).toDateString()
-            h4
-              a(href=`/albums/${album.id}`) #{album.title}
-              span #{date}
-            p #{review.review}
-            p #{review.reviewer}
-            br
+        if reviews.length !== 0
+          .user-reviews
+            each review in reviews
+              - var date = moment(review.review_date).format('MMMM Do YYYY')
+              .review-card(id=`${review.id}`)
+                .review-details
+                  h4.review-header
+                    a(href=`/albums/${album.id}`) #{album.title}
+                    span #{date}
+                  p #{review.review}
+                  p.author-name by&nbsp&nbsp #{review.reviewer}
+                  br
+                if review.reviewer_id === user.id
+                  .trash-can
+                    i.fa.fa-trash(aria-hidden='true')
+        else
+          .no-reviews
+            p No reviews found :(
+
       .col-md-2

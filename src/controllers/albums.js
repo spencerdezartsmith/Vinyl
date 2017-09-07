@@ -9,7 +9,7 @@ const renderHomePage = (req, res, next) => {
           res.render('index', { albums, reviews, title: 'Home' })
         })
     })
-    .catch(error => res.status(500).render('error', { error }))
+    .catch(error => res.status(500).render('errors/error', { error }))
 }
 
 const renderAlbumShow = (req, res, next) => {
@@ -22,7 +22,7 @@ const renderAlbumShow = (req, res, next) => {
           res.render('album', { album, reviews })
         })
     })
-    .catch(error => res.status(500).render('error', { error }))
+    .catch(error => res.status(500).render('errors/error', { error }))
 }
 
 module.exports = {

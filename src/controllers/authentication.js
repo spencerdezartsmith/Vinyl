@@ -2,7 +2,7 @@ const User = require('../models/users')
 const Review = require('../models/reviews')
 
 const renderSignup = (req, res, next) => {
-  res.render('signup', { title: 'Sign up' })
+  res.render('authentication/signup', { title: 'Sign up' })
 }
 
 const handleSignup = (req, res, next) => {
@@ -16,34 +16,34 @@ const handleSignup = (req, res, next) => {
   const errors = req.validationErrors()
 
   if (errors) {
-    res.render('signup', { errors })
+    res.render('authentication/signup', { errors })
   } else {
       User.findByEmail(email)
       .then(user => {
         if (user) {
           req.flash('error', 'Email already in use!')
-          res.status(422).render('signup')
+          res.status(422).render('authentication/signup')
         } else {
           User.createNewUser({ name, email, password })
             .then(user => {
               req.flash('success', 'You are now registered and can log in!')
-              res.redirect('/signin')
+              res.redirect('/sign-in')
           })
-          .catch(error => res.status(500).render('error', { error }))
+          .catch(error => res.status(500).render('errors/error', { error }))
         }
       })
-      .catch(error => res.status(500).render('error', { error }))
+      .catch(error => res.status(500).render('errors/error', { error }))
   }
 }
 
 const renderSignin = (req, res, next) => {
-  res.render('signin', { title: 'Sign in' })
+  res.render('authentication/signin', { title: 'Sign in' })
 }
 
 const handleSignin = (req, res, next) => {
   const user = req.user
   req.flash('success', 'You are now logged in!')
-  res.redirect('/');
+  res.redirect(`/users/${user.id}`);
 }
 
 const handleLogout = (req, res, next) => {

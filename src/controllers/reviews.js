@@ -7,7 +7,7 @@ const renderNewReview = (req, res, next) => {
     .then(album => {
       res.render('new_review', { album })
     })
-    .catch(err => next(err))
+    .catch(error => res.status(500).render('error', { error }))
 }
 
 const handleNewReview = (req, res, next) => {
@@ -19,7 +19,7 @@ const handleNewReview = (req, res, next) => {
     .then(album => {
       res.redirect(`/albums/${albumId}`)
     })
-    .catch(err => next(err))
+    .catch(error => res.status(500).render('error', { error }))
 }
 
 const handleDeleteReview = (req, res, next) => {
@@ -29,7 +29,7 @@ const handleDeleteReview = (req, res, next) => {
     .then(() => {
       res.send('Review was successfully deleted!')
     })
-    .catch(err => next(err))
+    .catch(error => res.status(500).render('error', { error }))
 }
 
 module.exports = {

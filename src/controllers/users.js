@@ -5,7 +5,7 @@ const renderUserProfile = (req, res, next) => {
 
   return Review.getReviewsForOneUser(userId)
     .then(reviews => {
-      res.render('profile', { reviews })
+      res.render('profile', { reviews, title: 'Profile' })
     })
     .catch(err => next(err))
 }

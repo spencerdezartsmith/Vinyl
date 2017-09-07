@@ -6,10 +6,10 @@ const renderHomePage = (req, res, next) => {
     .then(albums => {
       return Review.getThreeReviews()
         .then(reviews => {
-          res.render('index', { albums, reviews })
+          res.render('index', { albums, reviews, title: 'Home' })
         })
     })
-    .catch(err => next(err))
+    .catch(error => res.status(500).render('error', { error }))
 }
 
 const renderAlbumShow = (req, res, next) => {
@@ -22,7 +22,7 @@ const renderAlbumShow = (req, res, next) => {
           res.render('album', { album, reviews })
         })
     })
-    .catch(err => next(err))
+    .catch(error => res.status(500).render('error', { error }))
 }
 
 module.exports = {

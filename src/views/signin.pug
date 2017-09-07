@@ -2,6 +2,8 @@ extends layout.pug
 
 block content
   h1.form-header Sign in
+  if message
+    h1 #{message}
   .container-form
     .col-xs-4
     .col-xs-4

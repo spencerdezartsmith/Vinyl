@@ -2,7 +2,7 @@ const User = require('../models/users')
 const Review = require('../models/reviews')
 
 const renderSignup = (req, res, next) => {
-  res.render('signup')
+  res.render('signup', { title: 'Sign up' })
 }
 
 const handleSignup = (req, res, next) => {
@@ -18,24 +18,26 @@ const handleSignup = (req, res, next) => {
   if (errors) {
     res.render('signup', { errors })
   } else {
-      return User.findByEmail(email)
+      User.findByEmail(email)
       .then(user => {
         if (user) {
           req.flash('error', 'Email already in use!')
           res.status(422).render('signup')
         } else {
-          return User.createNewUser({ name, email, password })
+          User.createNewUser({ name, email, password })
             .then(user => {
               req.flash('success', 'You are now registered and can log in!')
               res.redirect('/signin')
-            })
+          })
+          .catch(error => res.status(500).render('error', { error }))
         }
       })
+      .catch(error => res.status(500).render('error', { error }))
   }
 }
 
 const renderSignin = (req, res, next) => {
-  res.render('signin')
+  res.render('signin', { title: 'Sign in' })
 }
 
 const handleSignin = (req, res, next) => {

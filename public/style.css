@@ -3,21 +3,19 @@ html, body {
   padding: 0;
 }
 
+
 .form-header {
   display: flex;
   justify-content: center;
   margin-bottom: 50px;
 }
 
-.reviews-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .btn {
   height: 36px;
+}
+
+.profile-page {
+  margin-top: 20px
 }
 
 .profile-image {
@@ -36,6 +34,13 @@ html, body {
   margin-top: 60px;
 }
 
+.reviews-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .review-details {
   width: 90%;
 }
@@ -43,6 +48,8 @@ html, body {
 .review-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding-right: 20px;
 }
 
 .review-card {
@@ -50,13 +57,63 @@ html, body {
   justify-content: space-between;
   height: 150px;
   align-items: center;
+  margin-bottom: 10px;
+}
+
+.review-title {
+  font-size: 1.5em;
+}
+
+.new-review-title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
 }
 
 .fa.fa-trash {
   font-size: 36px;
 }
 
+.album-list {
+  margin-top: 40px;
+}
+
+.album-title {
+  font-size: 1.5em;
+}
+
+.artist-name {
+  font-size: 1em;
+}
+
+.author-name {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+.date {
+  font-size: 0.8em;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.review-btn {
+  margin-left: 10px;
+}
+
+ul.success {
+  margin-left: 0px;
+}
+
 ul.success li {
+  list-style: none;
+  display: flex;
+  justify-content: center;
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid transparent;
@@ -67,6 +124,9 @@ ul.success li {
 }
 
 ul.error li {
+  list-style: none;
+  display: flex;
+  justify-content: center;
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid transparent;

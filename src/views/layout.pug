@@ -19,9 +19,7 @@ html(lang='en')
             span.icon-bar
           a.navbar-brand(href='/') Vinyl
         .navbar-collapse.collapse
-          ul.nav.navbar-nav
-            li(class=(title === 'Home' ? 'active' : ''))
-              a(href='/') Home
+          ul.nav.navbar-nav.navbar-right
             if !user
               li(class=(title === 'Sign up' ? 'active' : ''))
                 a(href='/signup') Sign up
@@ -30,10 +28,8 @@ html(lang='en')
             else
               li(class=(title === 'Profile' ? 'active' : ''))
                 a(href=`/users/${user.id}`) Profile
-          ul.nav.navbar-nav.navbar-right
-            if user
               li
-                a(href='/logout') Logout
+                a(href='/logout') Sign out
     .container
       != messages()
       block content

@@ -5,13 +5,13 @@ block content
     .row
       .col-xs-3
       .col-xs-6
-        h1 New review for #{album.title}
+        h1.new-review-title New review for #{album.title}
         .review-form
           form(method='post' action=`/albums/${album.id}/reviews/new`)
             .form-group
               .text-box
                 textarea.form-control(type='text', rows=10 name='review')
-              .submit-btn
-                button.btn.btn-primary(type='submit') Submit
-                a.btn.btn-default(href=`/albums/${album.id}`) Cancel
+              .btn-container
+                button.btn.btn-primary.review-btn(type='submit') Submit
+                a.btn.btn-default.review-btn(href=`/albums/${album.id}`) Cancel
       .col-xs-3

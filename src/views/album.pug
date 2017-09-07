@@ -9,13 +9,19 @@ block content
         .reviews-header
           h2 Reviews
           a.btn.btn-info(href=`/albums/${album.id}/reviews/new` role='button') Add Review
-        .album-reviews
+        .user-reviews
           each review in reviews
-            - var date = new Date(review.review_date).toDateString()
-            h4
-              a(href=`/albums/${album.id}`) #{album.title}
-              span #{date}
-            p #{review.review}
-            p #{review.reviewer}
-            br
+            - var date = moment(review.review_date).format('MMMM Do YYYY')
+            .review-card
+              .review-details
+                h4.review-header
+                  a(href=`/albums/${album.id}`) #{album.title}
+                  span #{date}
+                p #{review.review}
+                p.author-name by&nbsp&nbsp #{review.reviewer}
+                br
+              if review.reviewer_id === user.id
+                .trash-can
+                i.fa.fa-trash(aria-hidden='true')
+
       .col-md-2

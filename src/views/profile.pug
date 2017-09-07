@@ -1,19 +1,20 @@
 extends layout
 
 block content
-  .row
+  .row.profile-page
     .col-xs-4
       .profile-image
         img.img-thumbnail(src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/4/000/13d/345/21f37ec.jpg" alt="profile image")
     .col-xs-8
       .user-details
-        - var joinDate = new Date(user.date_joined).toDateString()
+        - var joinDate = moment(user.joined_date).format('MMMM Do YYYY')
         h1.user-name #{user.name}
         h4 Email: #{user.email}
         h4 Date Joined: #{joinDate}
       .user-reviews
+        h1 Reviews
         each review in reviews
-          - var reviewDate = new Date(review.review_date).toDateString()
+          - var reviewDate = moment(review.review_date).format('MMMM Do YYYY')
           .review-card(id=`${review.id}`)
             .review-details
               h4.review-header

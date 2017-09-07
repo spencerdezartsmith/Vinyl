@@ -43,7 +43,7 @@ const renderSignin = (req, res, next) => {
 const handleSignin = (req, res, next) => {
   const user = req.user
   req.flash('success', 'You are now logged in!')
-  res.redirect('/');
+  res.redirect(`/users/${user.id}`);
 }
 
 const handleLogout = (req, res, next) => {

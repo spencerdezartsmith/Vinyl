@@ -91,6 +91,11 @@ html, body {
   font-size: 1.5em;
 }
 
+.album-main-header {
+  display: flex;
+  justify-content: center;
+}
+
 .artist-name {
   font-size: 1em;
 }

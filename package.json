@@ -11,6 +11,7 @@
     "db:create": "createdb vinyl",
     "db:drop": "dropdb vinyl",
     "db:schema": "psql -d vinyl < src/models/db/config/schema.sql",
+    "db:store": "psql vinyl < node_modules/connect-pg-simple/table.sql",
     "db:seed": "psql -d vinyl < src/models/db/config/seed.sql",
     "test": "./node_modules/.bin/eslint src"
   },
@@ -20,6 +21,7 @@
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
     "connect-flash": "^0.1.1",
+    "connect-pg-simple": "^4.2.1",
     "express": "^4.15.3",
     "express-messages": "^1.0.1",
     "express-session": "^1.15.5",

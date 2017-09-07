@@ -1,0 +1,23 @@
+extends layout.pug
+
+block content
+  h1.form-header Sign up for Vinyl
+  .container-form
+    .col-xs-4
+    .col-xs-4
+      if errors
+          ul
+          each error in errors
+            li.alert.alert-danger #{error.msg}
+      form(method='post' action='/signup')
+        .form-group
+          input.form-control(type='text', name='name', placeholder='Enter name')
+        .form-group
+
+          input.form-control(type='email', name='email', placeholder='Enter email')
+        .form-group
+          input.form-control(type='password', name='password', placeholder='Enter password')
+        .form-group
+          input.form-control(type='password' name='passwordConf', placeholder='Please re enter your password')
+        button.btn.btn-primary(type='submit') Sign up
+    .col-xs-4

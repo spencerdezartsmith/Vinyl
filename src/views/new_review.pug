@@ -2,10 +2,10 @@ extends templates/layout
 
 block content
   .container
+    h1.new-review-title New review for #{album.title}
     .row
       .col-xs-3
       .col-xs-6
-        h1.new-review-title New review for #{album.title}
         .review-form
           form(method='post' action=`/albums/${album.id}/reviews/new`)
             .form-group

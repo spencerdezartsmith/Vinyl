@@ -33,13 +33,13 @@ npm start           : And you're off...
 - Have opinions
 - Have fun :)
 
-####Screenshots
+## Screenshots
 
+<img src="http://i.imgur.com/OtpxzSt.png" alt="alt text" width="200" height="150"><img src="http://i.imgur.com/KuoYfN3.png" alt="alt text" width="200" height="150"><img src="http://i.imgur.com/CSOiaxd.png" alt="alt text" width="200" height="150"><img src="http://i.imgur.com/bDH64l2.png" alt="alt text" width="200" height="150"><img src="http://i.imgur.com/8xsQshj.png" alt="alt text" width="200" height="150"><img src="http://i.imgur.com/OU5DtxY.png" alt="alt text" width="200" height="150">
 
+## Author:
+  Spencer Dezart-Smith
 
-Author:
-
-Spencer Dezart-Smith
 
 
 

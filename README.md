@@ -29,6 +29,17 @@ npm start           : And you're off...
 ```
 - Navigate to `http://localhost:3000/` 
 - Once you sign up a user, you can run `npm run db:reviews` to populate some dummy reviews. 
+- You are now able to navigate all around the site freely
+- Have opinions
+- Have fun :)
+
+####Screenshots
+
+
+
+Author:
+
+Spencer Dezart-Smith
 
 
 
